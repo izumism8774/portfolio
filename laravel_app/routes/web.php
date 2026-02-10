@@ -6,6 +6,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/portfolio_list', function () {
-    return view('portfolio_list');
+Route::get('/portfolio-list', function () {
+    return view('portfolio-list');
+});
+
+Route::get('/portfolio-post', function () {
+    return view('portfolio-post');
 });
