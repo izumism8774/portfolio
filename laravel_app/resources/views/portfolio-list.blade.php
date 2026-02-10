@@ -14,10 +14,10 @@
                 <img class="menu-icon" src="/images/lucide/book-marked.png" alt="Portfolio">
                 <span>Portfolio</span>
             </div>
-            <div class="menu-item">
+            <a href="/portfolio-post" class="menu-item">
                 <img class="menu-icon" src="/images/lucide/copy-plus.png" alt="Post">
                 <span>Post</span>
-            </div>
+            </a>
             <div class="menu-item">
                 <img class="menu-icon" src="/images/lucide/message-circle-more.png" alt="Chat">
                 <span>Chat</span>
