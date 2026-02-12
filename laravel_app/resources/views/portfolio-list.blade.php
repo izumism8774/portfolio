@@ -41,7 +41,7 @@
         <!-- グリッドレイアウト -->
         <div class="portfolio-grid">
             <!-- 作品 1 -->
-            <div class="portfolio-card" data-category="web">
+            <a href="{{ route('portfolio.show') }}" class="portfolio-card" data-category="web">
                 <div class="card-image">
                     <span class="badge badge-blue">Web</span>
                     <img src="/images/001.png" alt="Web Project">
@@ -50,10 +50,11 @@
                     <h3>Web app Projects</h3>
                     <p>test</p>
                 </div>
-            </div>
+            </a>
+
 
             <!-- 作品 2 -->
-            <div class="portfolio-card" data-category="app">
+            <a href="{{ route('portfolio.show') }}" class="portfolio-card" data-category="app">
                 <div class="card-image">
                     <span class="badge badge-purple">App</span>
                     <img src="/images/001.png" alt="App Project">
@@ -62,10 +63,10 @@
                     <h3>Web app Projects</h3>
                     <p>test</p>
                 </div>
-            </div>
+            </a>
 
             <!-- 作品 3 -->
-            <div class="portfolio-card" data-category="design">
+            <a href="{{ route('portfolio.show') }}" class="portfolio-card" data-category="design">
                 <div class="card-image">
                     <span class="badge badge-pink">Design</span>
                     <img src="/images/001.png" alt="Design Project">
@@ -74,10 +75,9 @@
                     <h3>Web app Projects</h3>
                     <p>test</p>
                 </div>
-            </div>
-
+            </a>
             <!-- 作品 4 -->
-            <div class="portfolio-card" data-category="app">
+            <a href="{{ route('portfolio.show') }}" class="portfolio-card" data-category="app">
                 <div class="card-image">
                     <span class="badge badge-purple">App</span>
                     <img src="/images/001.png" alt="App Project">
@@ -86,10 +86,9 @@
                     <h3>Web app Projects</h3>
                     <p>test</p>
                 </div>
-            </div>
-
+            </a>
             <!-- 作品 5 -->
-            <div class="portfolio-card" data-category="design">
+            <a href="{{ route('portfolio.show') }}" class="portfolio-card" data-category="design">
                 <div class="card-image">
                     <span class="badge badge-pink">Design</span>
                     <img src="/images/001.png" alt="Design Project">
@@ -98,10 +97,10 @@
                     <h3>Web app Projects</h3>
                     <p>test</p>
                 </div>
-            </div>
+            </a>
 
             <!-- 作品 6 -->
-            <div class="portfolio-card" data-category="web">
+            <a href="{{ route('portfolio.show') }}" class="portfolio-card" data-category="web">
                 <div class="card-image">
                     <span class="badge badge-blue">Web</span>
                     <img src="/images/001.png" alt="Web Project">
@@ -110,7 +109,7 @@
                     <h3>Web app Projects</h3>
                     <p>test</p>
                 </div>
-            </div>
+            </a>
         </div>
     </main>
 </div>
@@ -314,6 +313,9 @@
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s, box-shadow 0.3s;
         cursor: pointer;
+        display: block;
+        text-decoration:none;
+        color:inherit;
     }
 
     .portfolio-card:hover {
