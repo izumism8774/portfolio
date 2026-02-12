@@ -13,3 +13,7 @@ Route::get('/portfolio-list', function () {
 Route::get('/portfolio-post', function () {
     return view('portfolio-post');
 });
+
+Route::get('/portfolio-show', function () {
+    return view('portfolio-show');
+});
