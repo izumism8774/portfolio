@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('portfolios', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('picture');
+            $table->string('description');
+            $table->string('category');
+            $table->string('period');
+            $table->string('github');
+            $table->foreignId('tags_id')->constrained('tags')->onDelete('cascade');
+            $table->foreignId('stacks_id')->constrained('stacks')->onDelete('cascade');
             $table->timestamps();
         });
     }

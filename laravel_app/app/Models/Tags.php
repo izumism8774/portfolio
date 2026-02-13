@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tags extends Model
 {
-    //
+    protected $fillable = [
+        'text',
+    ];
+
+    public function portfolios()
+    {
+        return $this->hasMany(Portfolio::class);
+    }
 }
