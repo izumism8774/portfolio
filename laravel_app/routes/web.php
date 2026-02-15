@@ -1,22 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PortfolioController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/portfolio-list', function () {
-    return view('portfolio-list');
-});
-
-Route::get('/portfolio-post', function () {
-    return view('portfolio-post');
-});
-
-Route::get('/portfolio-show', function () {
-    return view('portfolio-show');
-});
+Route::get('/portfolio-list', [PortfolioController::class, 'index']);
+Route::get('/portfolio-post', [PortfolioController::class, 'create']);
+Route::post('/portfolio-post', [PortfolioController::class, 'store']);
+Route::get('/portfolio-show/{id}', [PortfolioController::class, 'show']);
 
 Route::get('/portfolio-chat', function () {
     return view('portfolio-chat');

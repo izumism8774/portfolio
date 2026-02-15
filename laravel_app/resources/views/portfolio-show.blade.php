@@ -39,7 +39,7 @@
           </div>
         </div>
 
-        <div class="show-updated">最終更新日：2026/02/08</div>
+        <div class="show-updated">最終更新日：{{ $portfolio->updated_at->format('Y/m/d') }}</div>
       </header>
 
       <!-- ===== 本文 ===== -->
@@ -49,18 +49,16 @@
           <section class="left">
             <div class="card main-card">
               <div class="hero">
-                <img src="/images/002.png" alt="hero" />
+                <img src="{{ $portfolio->picture }}" alt="{{ $portfolio->title }}" />
               </div>
 
               <div class="main-body">
-                <h2>Portfolio site!</h2>
-                <div class="sub">審査会提出！</div>
+                <h2>{{ $portfolio->title }}</h2>
+                <div class="sub">{{ $portfolio->category }}</div>
                 <div class="divider"></div>
 
                 <div class="desc">
-                  とにかくめっちゃいい作品ですとにかくめっちゃいい作品ですとにかくめっちゃいい作品ですとにかくめっちゃいい作品です…
-                  <br /><br />
-                  （ここは後でDBに繋いだら本文が入る）
+                  {{ $portfolio->description }}
                 </div>
               </div>
             </div>
@@ -69,44 +67,38 @@
           <!-- 右：情報カード＋Related -->
           <aside class="right">
             <div class="card info-card">
-              <div class="period">2026/01/28~2026/02/13</div>
+              <div class="period">{{ $portfolio->period }}</div>
 
               <div class="meta">
                 <div class="meta-row">
                   <div class="meta-label">Category：</div>
-                  <span class="pill pill-web">Web</span>
+                  <span class="pill pill-{{ $portfolio->category === 'web' ? 'web' : ($portfolio->category === 'app' ? 'purple' : 'pink') }}">
+                    {{ ucfirst($portfolio->category) }}
+                  </span>
                 </div>
 
                 <div class="meta-row">
                   <div class="meta-label">Stack：</div>
                   <div class="pill-row">
-                    <span class="pill pill-purple">PHP</span>
-                    <span class="pill pill-pink">Figma</span>
+                    @if($portfolio->stacks)
+                      <span class="pill pill-purple">{{ $portfolio->stacks->text }}</span>
+                    @endif
                   </div>
                 </div>
 
                 <div class="meta-row">
                   <div class="meta-label">Tags：</div>
                   <div class="pill-grid">
-                    <span class="pill pill-tag">Simple</span>
-                    <span class="pill pill-tag">Design</span>
-                    <span class="pill pill-tag">Simple</span>
-                    <span class="pill pill-tag">Design</span>
-                    <span class="pill pill-tag">Simple</span>
-                    <span class="pill pill-tag">Design</span>
-                    <span class="pill pill-tag">Simple</span>
-                    <span class="pill pill-tag">Design</span>
-                    <span class="pill pill-tag">Simple</span>
-                    <span class="pill pill-tag">Design</span>
-                    <span class="pill pill-tag">Simple</span>
-                    <span class="pill pill-tag">Design</span>
+                    @if($portfolio->tags)
+                      <span class="pill pill-tag">{{ $portfolio->tags->text }}</span>
+                    @endif
                   </div>
                 </div>
 
                 <div class="meta-row">
                   <div class="meta-label">Github：</div>
-                  <a class="github" href="https://github.com/tahoito/cafest_app.git" target="_blank" rel="noreferrer">
-                    https://github.com/tahoito/cafest_app.git
+                  <a class="github" href="{{ $portfolio->github }}" target="_blank" rel="noreferrer">
+                    {{ $portfolio->github }}
                   </a>
                 </div>
               </div>

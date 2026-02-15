@@ -40,77 +40,24 @@
 
         <!-- グリッドレイアウト -->
         <div class="portfolio-grid">
-            <!-- 作品 1 -->
-            <div class="portfolio-card" data-category="web">
-                <div class="card-image">
-                    <span class="badge badge-blue">Web</span>
-                    <img src="/images/001.png" alt="Web Project">
-                </div>
-                <div class="card-content">
-                    <h3>Web app Projects</h3>
-                    <p>test</p>
-                </div>
-            </div>
-
-            <!-- 作品 2 -->
-            <div class="portfolio-card" data-category="app">
-                <div class="card-image">
-                    <span class="badge badge-purple">App</span>
-                    <img src="/images/001.png" alt="App Project">
-                </div>
-                <div class="card-content">
-                    <h3>Web app Projects</h3>
-                    <p>test</p>
-                </div>
-            </div>
-
-            <!-- 作品 3 -->
-            <div class="portfolio-card" data-category="design">
-                <div class="card-image">
-                    <span class="badge badge-pink">Design</span>
-                    <img src="/images/001.png" alt="Design Project">
-                </div>
-                <div class="card-content">
-                    <h3>Web app Projects</h3>
-                    <p>test</p>
-                </div>
-            </div>
-
-            <!-- 作品 4 -->
-            <div class="portfolio-card" data-category="app">
-                <div class="card-image">
-                    <span class="badge badge-purple">App</span>
-                    <img src="/images/001.png" alt="App Project">
-                </div>
-                <div class="card-content">
-                    <h3>Web app Projects</h3>
-                    <p>test</p>
-                </div>
-            </div>
-
-            <!-- 作品 5 -->
-            <div class="portfolio-card" data-category="design">
-                <div class="card-image">
-                    <span class="badge badge-pink">Design</span>
-                    <img src="/images/001.png" alt="Design Project">
-                </div>
-                <div class="card-content">
-                    <h3>Web app Projects</h3>
-                    <p>test</p>
-                </div>
-            </div>
-
-            <!-- 作品 6 -->
-            <div class="portfolio-card" data-category="web">
-                <div class="card-image">
-                    <span class="badge badge-blue">Web</span>
-                    <img src="/images/001.png" alt="Web Project">
-                </div>
-                <div class="card-content">
-                    <h3>Web app Projects</h3>
-                    <p>test</p>
-                </div>
-            </div>
+            @forelse($portfolios as $portfolio)
+                <a href="/portfolio-show/{{ $portfolio->id }}" class="portfolio-card" data-category="{{ $portfolio->category }}">
+                    <div class="card-image">
+                        <span class="badge badge-{{ $portfolio->category === 'web' ? 'blue' : ($portfolio->category === 'app' ? 'purple' : 'pink') }}">
+                            {{ ucfirst($portfolio->category) }}
+                        </span>
+                        <img src="{{ $portfolio->picture }}" alt="{{ $portfolio->title }}">
+                    </div>
+                    <div class="card-content">
+                        <h3>{{ $portfolio->title }}</h3>
+                        <p>{{ Str::limit($portfolio->description, 100) }}</p>
+                    </div>
+                </a>
+            @empty
+                <p style="grid-column: 1 / -1; text-align: center; color: #999; padding: 40px;">
+                    ポートフォリオがまだ登録されていません
+                </p>
+            @endforelse
         </div>
     </main>
 </div>
