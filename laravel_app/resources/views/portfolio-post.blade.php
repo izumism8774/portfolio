@@ -90,21 +90,22 @@
               <div class="field">
                 <div class="label">Stack</div>
                 <div class="chips" data-group="stack">
-                  <button class="chip is-active" type="button">PHP</button>
-                  <button class="chip" type="button">Figma</button>
-                  <button class="chip" type="button">Design</button>
+                  @forelse($stacks as $stack)
+                    <button class="chip" type="button" value="{{ $stack->id }}" name="stacks_id">{{ $stack->text }}</button>
+                  @empty
+                    <p style="color: #999;">スタックがありません</p>
+                  @endforelse
                 </div>
               </div>
 
               <div class="field">
                 <div class="label">Tags</div>
                 <div class="chips" data-group="tags">
-                  <button class="chip" type="button">Simple</button>
-                  <button class="chip" type="button">Design</button>
-                  <button class="chip" type="button">UI</button>
-                  <button class="chip" type="button">MVP</button>
-                  <button class="chip" type="button">Laravel</button>
-                  <button class="chip" type="button">Next.js</button>
+                  @forelse($tags as $tag)
+                    <button class="chip" type="button" value="{{ $tag->id }}" name="tags_id">{{ $tag->text }}</button>
+                  @empty
+                    <p style="color: #999;">タグがありません</p>
+                  @endforelse
                 </div>
               </div>
 
