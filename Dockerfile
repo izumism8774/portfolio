@@ -5,6 +5,8 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN apt-get update
 RUN apt-get install -y zip
 
+RUN docker-php-ext-install pdo_mysql
+
 COPY . .
 WORKDIR /workdir/laravel_app
 RUN composer install

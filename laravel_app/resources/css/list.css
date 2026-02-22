@@ -1,0 +1,259 @@
+/* =========================
+  Portfolio List (list.css)
+========================= */
+
+/* ---- Reset ---- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---- Base ---- */
+body {
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: #f3f4f7; /* 画像の薄いグレー */
+}
+
+/* ---- Layout ---- */
+.portfolio-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ---- Sidebar ---- */
+.sidebar {
+  width: 90px;
+  background: linear-gradient(to bottom, #ff1054 0%, #db7eb9 50%, #6d6ea1 100%);
+  position: fixed;
+  inset: 0 auto 0 0; /* top right bottom left */
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 22px 0;
+  box-shadow: 2px 0 14px rgba(0, 0, 0, 0.18);
+  z-index: 200;
+}
+
+.sidebar-menu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  align-items: center;
+}
+
+.menu-item {
+  width: 70px;
+  padding: 10px 8px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.menu-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.menu-item.active {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.menu-icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* アイコンを丸く見せる（画像の雰囲気寄せ） */
+.menu-item.active .menu-icon {
+  background: #fff;
+  border-radius: 999px;
+  padding: 7px;
+  box-sizing: content-box;
+}
+
+/* ---- Main ---- */
+.main-content {
+  margin-left: 90px; /* sidebar幅と合わせる */
+  width: calc(100% - 90px);
+  padding: 0 44px 44px;
+}
+
+/* ---- Fixed Header ---- */
+.portfolio-header {
+  position: fixed;
+  top: 0;
+  left: 90px;
+  right: 0;
+  background: #fff;
+  padding: 28px 44px 22px;
+  z-index: 150;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.portfolio-header h1 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #111;
+  display: inline-block;
+  position: relative;
+  line-height: 1.1;
+}
+
+/* タイトル下のピンク線（画像っぽく少し左に伸ばす） */
+.portfolio-header h1::after {
+  content: "";
+  position: absolute;
+  left: -8px;
+  bottom: -8px;
+  width: calc(100% + 16px);
+  height: 4px;
+  background: #ff1054;
+  border-radius: 999px;
+}
+
+/* ヘッダーの高さ分だけ下げる（超重要） */
+.main-content {
+  padding-top: 160px; /* ←見た目が合わなければ 150〜190で微調整 */
+}
+
+/* ---- Tabs ---- */
+.tabs {
+  margin-top: 18px;
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 12px;
+  background: #eef0f4; /* 非アクティブの薄灰 */
+  color: #b3b7c2;
+  font-size: 20px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+
+.tab-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Active（画像：Allがピンクで白文字） */
+.tab-btn.active {
+  color: #fff;
+}
+
+/* カテゴリ別のアクティブ色 */
+.tab-btn[data-category="all"].active { background: #fb2e82; }
+.tab-btn[data-category="web"].active { background: #67c7f5; }
+.tab-btn[data-category="app"].active { background: #6d6ea1; }
+.tab-btn[data-category="design"].active { background: #ff1054; }
+
+/* ホバーも色を寄せる */
+.tab-btn[data-category="all"]:hover { background: #fb2e82; color: #fff; }
+.tab-btn[data-category="web"]:hover { background: #67c7f5; color: #fff; }
+.tab-btn[data-category="app"]:hover { background: #6d6ea1; color: #fff; }
+.tab-btn[data-category="design"]:hover { background: #ff1054; color: #fff; }
+
+/* ---- Grid ---- */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(280px, 1fr)); /* 画像は3列っぽい */
+  gap: 34px;
+}
+
+/* 画面が狭い時は列数を落とす */
+@media (max-width: 1180px) {
+  .portfolio-grid { grid-template-columns: repeat(2, minmax(260px, 1fr)); }
+}
+@media (max-width: 820px) {
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .portfolio-header { padding: 22px 20px 18px; left: 90px; }
+  .main-content { padding: 150px 20px 30px; }
+}
+
+/* ---- Card ---- */
+.portfolio-card {
+  display: block;
+  background: #fff;
+  border-radius: 22px; /* 画像は丸み強め */
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  transition: 0.18s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+}
+
+/* 画像エリア */
+.card-image {
+  position: relative;
+  height: 190px;
+  background: #dbeafe; /* 読み込み前でも青っぽく */
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* バッジ（画像の左上のピル） */
+.badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 96px;
+  height: 40px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  z-index: 5;
+}
+
+.badge-blue { background: #67c7f5; }
+.badge-purple { background: #6d6ea1; }
+.badge-pink { background: #ff1054; }
+
+/* テキスト部分 */
+.card-content {
+  padding: 18px 18px 20px;
+}
+
+.card-content h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.card-content p {
+  font-size: 13px;
+  color: #444;
+  line-height: 1.7;
+}
