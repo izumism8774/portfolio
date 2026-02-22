@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        
+
         Schema::create('portfolios', function (Blueprint $table) {
             $table->id();
             $table->string('title');
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->foreignId('stacks_id')->constrained('stacks')->onDelete('cascade');
             $table->timestamps();
         });
-        
+
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 
